@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        body {
+            margin: 0;
+        }
         div {
             display: flex;
             justify-content: center;
@@ -19,6 +22,7 @@
     <title>JS Todo</title>
 </head>
 <body>
+    <%- include('partials/Navbar') %>
     <div>
         <h1>JS Todo</h1>
     </div>
@@ -36,7 +40,11 @@
                 <% data.map(el => { %>
                     <tr>
                         <td><%= el.id %></td>
-                        <td><%= el.todo %></td>
+                        <td>
+                            <a href="/todos/<%= el.id %>">
+                                <%= el.todo %>
+                            </a>
+                        </td>
                         <td><%= el.complete %></td>
                         <td><%= el.createdat %></td>
                     </tr>
@@ -44,5 +52,7 @@
             </tbody>
         </table>
     </div>
+
+    <%- include('partials/Footer') %>
 </body>
 </html>
