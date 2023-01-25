@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Todo</title>
+</head>
+<body>
+    <div>
+        <h1>JS Todo</h1>
+    </div>
+
+    <div>
+        <table style="border: 1px solid">
+            <thead>
+                <th>id</th>
+                <th>Todo</th>
+                <th>complete</th>
+                <th>createdAt</th>
+            </thead>
+
+            <tbody>
+                <% data.map(el => { %>
+                    <tr>
+                        <td><%= el.id %></td>
+                        <td><%= el.todo %></td>
+                        <td><%= el.complete %></td>
+                        <td><%= el.createdat %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "todo": "pergi ke kampus",
+    "complete": "❌",
+    "createdAt": "2023-01-20T01:43:22.083Z"
+  },
+  {
+    "id": 2,
+    "todo": "buat tugas",
+    "complete": "❌",
+    "createdAt": "2023-01-20T01:43:39.631Z"
+  },
+  {
+    "id": 3,
+    "todo": "ngaji",
+    "complete": "❌",
+    "createdAt": "2023-01-20T01:43:54.624Z"
+  },
+  {
+    "id": 4,
+    "todo": "shopping time",
+    "complete": "X",
+    "createdAt": "2021-01-12T14:51:45.549Z"
+  },
+  {
+    "id": 5,
+    "todo": "have a dinner",
+    "complete": "X",
+    "createdAt": "2021-01-12T15:04:06.587Z"
+  },
+  {
+    "id": 6,
+    "todo": "ngamen",
+    "complete": "❌",
+    "createdAt": "2023-01-19T05:15:02.910Z"
+  },
+  {
+    "id": 7,
+    "todo": "maen surfing",
+    "complete": "❌",
+    "createdAt": "2023-01-20T02:13:13.249Z"
+  },
+  {
+    "id": 8,
+    "todo": "ke pantai",
+    "complete": "❌",
+    "createdAt": "2023-01-20T01:43:07.851Z"
+  },
+  {
+    "id": 9,
+    "todo": "coba Promise",
+    "complete": "❌",
+    "createdAt": "2023-01-23T10:02:33.879Z"
+  },
+  {
+    "id": 10,
+    "todo": "coba Promise",
+    "complete": "❌",
+    "createdAt": "2023-01-23T10:04:08.059Z"
+  },
+  {
+    "id": 11,
+    "todo": "coba Promise",
+    "complete": "❌",
+    "createdAt": "2023-01-23T12:22:56.051Z"
+  },
+  {
+    "id": 12,
+    "todo": "coba Promise",
+    "complete": "❌",
+    "createdAt": "2023-01-23T12:23:14.238Z"
+  },
+  {
+    "id": 13,
+    "todo": "coba Promise",
+    "complete": "❌",
+    "createdAt": "2023-01-23T12:24:20.544Z"
+  },
+  {
+    "id": 14,
+    "todo": "coba Promise",
+    "complete": "❌",
+    "createdAt": "2023-01-23T12:24:29.807Z"
+  },
+  {
+    "id": 15,
+    "todo": "coba Promise",
+    "complete": "❌",
+    "createdAt": "2023-01-23T12:26:38.317Z"
+  }
+]
