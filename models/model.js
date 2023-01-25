@@ -46,6 +46,13 @@ class Model {
 
     }
 
+    static deltTodo(id) {
+        let delQuery = `DELETE FROM todos WHERE id = ${id}`
+
+        return pool.query(delQuery)
+    }
+
+
     static addTodo(todo) {
         return new Promise((resoleve, rejects) => {
             if(!todo) return rejects('Masukkan Input')
@@ -69,37 +76,6 @@ class Model {
         })
     }
 
-    static deltTodo(id) {
-        id = +id
-        return new Promise((resoleve, rejects) => {
-            if(!id) return rejects('Masukkan id yg ingin didelete')
-
-            this.list()
-            .then(dbJson => {
-                let delTodo;
-                let newDb = []
-                dbJson.map(item => {
-                    if(item.id == id) {
-                        delTodo = item
-                    }else {
-                        newDb.push(item)
-                    }
-                })
-
-                if (!delTodo) return rejects(`id ${id} tidak ada dalam database`)
-
-                this.writeToDb(newDb)
-                return delTodo
-            })
-            .then(deltTodo => {
-                return resoleve(deltTodo)
-            })
-            .catch(err => {
-                rejects(err)
-            })
-
-        })
-    }
 
     // static editTodo(inputs, cb) {
     //     let [id, todo] = inputs

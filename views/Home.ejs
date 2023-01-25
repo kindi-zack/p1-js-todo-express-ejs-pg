@@ -34,6 +34,7 @@
                 <th>Todo</th>
                 <th>complete</th>
                 <th>createdAt</th>
+                <th>Action</th>
             </thead>
 
             <tbody>
@@ -47,6 +48,11 @@
                         </td>
                         <td><%= el.complete %></td>
                         <td><%= el.createdat %></td>
+                        <td>
+                            <a href="/todos/delete/<%= el.id %>">DELETE</a>
+                                    ||
+                            <a href="/todos/edit/<%= el.id %>">EDIT</a>
+                        </td>
                     </tr>
                 <% }) %>
             </tbody>

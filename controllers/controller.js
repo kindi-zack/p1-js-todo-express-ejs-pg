@@ -25,6 +25,18 @@ class Controller {
         })     
     }
 
+    static deltTodo(req, res) {
+        let { id } = req.params
+        Model.deltTodo(id)
+        .then(delData => {
+            res.redirect('/')
+        })
+        .catch(err => {
+           res.send(err)
+        })
+    }
+
+
     static addTodo(todo) {
         Model.addTodo(todo)
         .then(data => {
@@ -32,16 +44,6 @@ class Controller {
         })
         .catch(err => {
             View.showErr(err)
-        })
-    }
-
-    static deltTodo(id) {
-        Model.deltTodo(id)
-        .then(delData => {
-            View.deltTodo(delData)
-        })
-        .catch(err => {
-           View.showErr(err)
         })
     }
 
