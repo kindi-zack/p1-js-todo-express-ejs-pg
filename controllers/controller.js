@@ -12,13 +12,16 @@ class Controller {
         })
     }
 
-    static findById(id) {
+    static findById(req, res) {
+        let id = req.params.id
+
         Model.findById(id)
-        .then(data => {
-            View.findById(data)
+        .then(({rows}) => {
+
+            res.render('Find', { rows: rows[0] })
         })
         .catch(err => {
-            View.showErr(err)
+            res.send(err)
         })     
     }
 

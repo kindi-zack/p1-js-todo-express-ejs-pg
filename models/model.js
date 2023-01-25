@@ -28,41 +28,15 @@ class Model {
     }
 
     static list() {
-        let listQuery = `SELECT * FROM todo`
+        let listQuery = `SELECT * FROM todos`
 
         return pool.query(listQuery)
-
-        // return new Promise((resolve, rejcets) => {
-        //     this.readJson()
-        //     .then(data => {
-        //         data = JSON.parse(data)
-        //         data = data.map(el => {
-        //             return new Todo(el.id, el.todo, el.complete, el.createdAt)
-        //         })
-
-        //         return resolve(data)
-        //     })
-        //     .catch(err => {
-        //         return rejcets(err)
-        //     })
-        // })
     }
 
     static findById(id) {
-        return new Promise((resolve, rejects) => {
-            this.list()
-            .then(todos => {
-                let data;
-                todos.map(item => {
-                    if(item.id == id) data = item
-                })
-
-                return resolve(data)
-            })
-            .catch(err => {
-                return rejects(err)
-            })
-        })
+        let findQuery = `SELECT * FROM todos WHERE id = ${id}`
+        
+        return pool.query(findQuery)
     }
 
     static writeToDb(data) {

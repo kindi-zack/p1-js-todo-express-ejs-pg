@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+        }
+        
+        td {
+           border: 1px solid black 
+        }
+    </style>
+    <title>JS Todo</title>
+</head>
+<body>
+    <div>
+        <h1>Finding</h1>
+    </div>
+
+    <div>
+        <% const { id, todo, complete, createdat } = rows %>
+
+        <table>
+            <tr>
+                <td>id</td>
+                <td><%= id %></td>
+            </tr>
+            <tr>
+                <td>todo</td>
+                <td><%= todo %></td>
+            </tr>
+            <tr>
+                <td>compelete</td>
+                <td><%= complete %></td>
+            </tr>
+            <tr>
+                <td>createat</td>
+                <td><%= createdat %></td>
+            </tr>
+            
+        </table>
+    </div>
+</body>
+</html>
