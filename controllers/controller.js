@@ -37,13 +37,20 @@ class Controller {
     }
 
 
-    static addTodo(todo) {
-        Model.addTodo(todo)
+    static addTodo(req, res) {
+        res.render('AddPage')
+    }
+
+    static postAdd(req, res) {
+        let todo = req.body.todo
+        Model.postAdd(todo)
         .then(data => {
-            View.addTodo(data)
+            res.redirect('/')
+            // res.send(data)
         })
         .catch(err => {
-            View.showErr(err)
+            console.log(err)
+            res.send(err)
         })
     }
 

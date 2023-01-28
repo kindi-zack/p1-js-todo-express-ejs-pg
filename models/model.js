@@ -39,12 +39,6 @@ class Model {
         return pool.query(findQuery)
     }
 
-    static writeToDb(data) {
-
-        data = JSON.stringify(data, null, 2)
-        return fs.promises.writeFile('./data.json',data, null, 2)
-
-    }
 
     static deltTodo(id) {
         let delQuery = `DELETE FROM todos WHERE id = ${id}`
@@ -53,27 +47,53 @@ class Model {
     }
 
 
-    static addTodo(todo) {
+    static postAdd(todo) {
         return new Promise((resoleve, rejects) => {
-            if(!todo) return rejects('Masukkan Input')
-            
-            this.list()
-            .then(dataJson => {
-                let id = dataJson.length === 0 ? 1: dataJson[dataJson.length - 1].id + 1 
-                let instTodo = new Todo(id, todo)
-                dataJson.push(instTodo)
+           return this.list()
+            .then(({ rows }) => {
+                let id = rows.length === 0 ? 0 : rows[rows.length - 1].id + 1
+                let value = new Todo(id, todo)
+                let createdat = JSON.stringify(value.createdAt)
 
-                this.writeToDb(dataJson)
-                return instTodo
+                let insert = `INSERT INTO todos (id, todo, complete, createdat) VALUES 
+                (${value.id},'${value.todo}', '${value.complete}', '${createdat}');`
+
+                // console.log(insert +" ================== "+ JSON.stringify(value.createdAt))
+                return pool.query(insert)
             })
-            .then((instTodo) => {
-                // this.writeToDb(dataJson)
-                return resoleve(instTodo) 
+            .then(dataPool => {
+                resoleve(dataPool)
             })
             .catch(err => {
-                return rejects(err)
+                rejects(err)
             })
         })
+        
+
+        let value = new Todo()
+
+
+    
+        // return new Promise((resoleve, rejects) => {
+        //     if(!todo) return rejects('Masukkan Input')
+            
+        //     this.list()
+        //     .then(dataJson => {
+        //         let id = dataJson.length === 0 ? 1: dataJson[dataJson.length - 1].id + 1 
+        //         let instTodo = new Todo(id, todo)
+        //         dataJson.push(instTodo)
+
+        //         this.writeToDb(dataJson)
+        //         return instTodo
+        //     })
+        //     .then((instTodo) => {
+        //         // this.writeToDb(dataJson)
+        //         return resoleve(instTodo) 
+        //     })
+        //     .catch(err => {
+        //         return rejects(err)
+        //     })
+        // })
     }
 
 
