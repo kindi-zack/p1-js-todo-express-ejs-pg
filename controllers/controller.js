@@ -38,7 +38,11 @@ class Controller {
 
 
     static addTodo(req, res) {
-        res.render('AddPage')
+        let errMsg = req.query.msg
+
+        if(errMsg) errMsg = [errMsg, 'contoh aja', 'gimana jadinya', 'kalau ada lebih', 'satu err msg']
+        
+        res.render('AddPage', { errMsg })
     }
 
     static postAdd(req, res) {
@@ -49,8 +53,8 @@ class Controller {
             // res.send(data)
         })
         .catch(err => {
-            console.log(err)
-            res.send(err)
+            console.log('## ERROR ##'+err)
+            res.redirect(`/todos/add?msg=${err}`)
         })
     }
 

@@ -52,6 +52,9 @@ class Model {
            return this.list()
             .then(({ rows }) => {
                 let id = rows.length === 0 ? 0 : rows[rows.length - 1].id + 1
+
+                if(!todo) return rejects('todo can not be empty !!!')
+
                 let value = new Todo(id, todo)
                 let createdat = JSON.stringify(value.createdAt)
 

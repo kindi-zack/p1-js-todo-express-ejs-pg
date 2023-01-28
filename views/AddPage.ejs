@@ -14,6 +14,13 @@
         <input type="submit">
     </form>
 
+    <% if(errMsg) { %>
+        <% errMsg.map(el => { %>
+            <p><%= el %></p>
+        <% }) %>
+    <%}%>
+    
+    
     <%-include('partials/Footer')%>
 </body>
 </html>
