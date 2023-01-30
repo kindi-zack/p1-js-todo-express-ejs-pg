@@ -58,13 +58,28 @@ class Controller {
         })
     }
 
-    static editTodo(inputs) {
-        Model.editTodo(inputs, (err, dataEdit) => {
-            if(err) {
-                View.showErr(err)
-            }else {
-                View.editTodo(dataEdit)
-            }
+    static editTodo(req, res) {
+        let id = req.params.id
+        Model.editTodo(id)
+        .then(data => {
+            res.render('EditForm', { editData : data[0] })
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+    static postEdit(req, res) {
+        let id = req.params.id
+        let todo = req.body.todo
+
+        Model.postEdit(id, todo)
+        .then(output => {
+            res.redirect('/')
+        })
+        .catch(err => {
+            res.send(err)
+            // console.log(eer)
         })
     }
 

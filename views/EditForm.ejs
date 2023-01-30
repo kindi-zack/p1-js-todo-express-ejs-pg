@@ -13,23 +13,16 @@
         }
 
     </style>
-    <title>Add Page</title>
+    <title>Edit Page</title>
 </head>
 <body>
     <%-include('partials/Navbar')%>
-    <pre></pre>
     <main>
-        <form action="/todos/add" method="POST">
+        <form action="/todos/<%= editData.id %>/edit" method="POST">
             <label for="">Todo</label>
-            <input type="text" name="todo" id=""><br>
-            <input type="submit">
+            <input value="<%= editData.todo %>" type="text" name="todo" id=""><br>
+            <button type="submit">Edit</button>
         </form>
-        
-        <% if(errMsg) { %>
-            <% errMsg.map(el => { %>
-                <p><%= el %></p>
-            <% }) %>
-        <%}%>
     </main>
     <%-include('partials/Footer')%>
 </body>

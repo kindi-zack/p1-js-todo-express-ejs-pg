@@ -71,68 +71,42 @@ class Model {
                 rejects(err)
             })
         })
-        
-
-        let value = new Todo()
-
-
-    
-        // return new Promise((resoleve, rejects) => {
-        //     if(!todo) return rejects('Masukkan Input')
-            
-        //     this.list()
-        //     .then(dataJson => {
-        //         let id = dataJson.length === 0 ? 1: dataJson[dataJson.length - 1].id + 1 
-        //         let instTodo = new Todo(id, todo)
-        //         dataJson.push(instTodo)
-
-        //         this.writeToDb(dataJson)
-        //         return instTodo
-        //     })
-        //     .then((instTodo) => {
-        //         // this.writeToDb(dataJson)
-        //         return resoleve(instTodo) 
-        //     })
-        //     .catch(err => {
-        //         return rejects(err)
-        //     })
-        // })
     }
 
 
-    // static editTodo(inputs, cb) {
-    //     let [id, todo] = inputs
-    //     //ginama kalau id bukan number
-    //     id = +id
+    static editTodo(id) {
+        return new Promise((resolve, rejects) => {
+            this.findById(id)
+            .then(data => {
+                let editData = data.rows
+                return resolve(editData)
+            })
+            .catch(err => {
+                return rejects(err)
+            })
+        }) 
+    }
+    
+    static postEdit(id, todo) {
+        return new Promise((resolve, rejects) => {
 
-    //     this.list((err, dataJson) => {
-    //         if(err) {
-    //             cb(err)
-    //         }else {
-    //             let newTodo;
-                
-    //             this.list((err, dataJson) => {
-    //                 dataJson = dataJson.map(item => {
-    //                                 if(item.id == id) {
-    //                                     newTodo = item
-    //                                     return new Todo(id, todo)
-    //                                 }else {
-    //                                     return item
-    //                                 }
-    //                             })
+            if(!todo) return rejects('todo tidak boleh kosong')
 
-    //                 if(!newTodo) return cb(`id ${id} tidak ditemukan`)                
-                
-    //                 this.writeToDb(dataJson, (err, res) => {
-    //                     if(err) {
-    //                         cb(err)
-    //                     }
-    //                 })
-    //                 cb(null, newTodo)  
-    //             })         
-    //         }
-    //     })
-    // }
+            let newEditData = new Todo(id, todo)
+            let { todo: newTodo, createdAt} = newEditData
+            createdAt = JSON.stringify(createdAt)
+            let updateQ = `UPDATE todos SET todo = '${newTodo}', createdAt = '${createdAt}' WHERE id = ${id};`
+
+            return pool.query(updateQ)
+            .then(data => {
+                return resolve(data)
+            })
+            .catch(err => {
+                return rejects(err)
+            })
+        })
+    }
+
 }
 
 module.exports = {Model, Todo}
