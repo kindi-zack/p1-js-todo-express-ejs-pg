@@ -9,6 +9,11 @@
         body {
             margin: 0;
         }
+
+        main {
+            height: 80vh;
+        }
+
         div {
             display: flex;
             justify-content: center;
@@ -23,42 +28,44 @@
 </head>
 <body>
     <%- include('partials/Navbar') %>
-    <div>
-        <h1>JS Todo</h1>
-    </div>
-
-    <div>
-        <table>
-            <thead>
-                <th>id</th>
-                <th>Todo</th>
-                <th>complete</th>
-                <th>createdAt</th>
-                <th>Action</th>
-            </thead>
-
-            <tbody>
-                <% data.map(el => { %>
-                    <tr>
-                        <td><%= el.id %></td>
-                        <td>
-                            <a href="/todos/<%= el.id %>">
-                                <%= el.todo %>
-                            </a>
-                        </td>
-                        <td><%= el.complete %></td>
-                        <td><%= el.createdat %></td>
-                        <td>
-                            <a href="/todos/delete/<%= el.id %>">DELETE</a>
-                                    ||
-                            <a href="/todos/edit/<%= el.id %>">EDIT</a>
-                        </td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    </div>
-
+    <main>
+        <div>
+            <h1>JS Todo</h1>
+        </div>
+    
+        <div>
+            <table>
+                <thead>
+                    <th>id</th>
+                    <th>Todo</th>
+                    <th>complete</th>
+                    <th>createdAt</th>
+                    <th>Action</th>
+                </thead>
+    
+                <tbody>
+                    <% data.map(el => { %>
+                        <tr>
+                            <td><%= el.id %></td>
+                            <td>
+                                <a href="/todos/<%= el.id %>">
+                                    <%= el.todo %>
+                                </a>
+                            </td>
+                            <td><%= el.complete %></td>
+                            <td><%= el.createdat %></td>
+                            <td>
+                                <a href="/todos/delete/<%= el.id %>">DELETE</a>
+                                        ||
+                                <a href="/todos/edit/<%= el.id %>">EDIT</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+   
     <%- include('partials/Footer') %>
 </body>
 </html>

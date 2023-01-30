@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        main{
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
     <title>Add Page</title>
 </head>
 <body>
     <%-include('partials/Navbar')%>
-    <form action="/todos/add" method="POST">
-        <label for="">Todo</label>
-        <input type="text" name="todo" id=""><br>
-        <input type="submit">
-    </form>
-
-    <% if(errMsg) { %>
-        <% errMsg.map(el => { %>
-            <p><%= el %></p>
-        <% }) %>
-    <%}%>
+    <main>
+        <form action="/todos/add" method="POST">
+            <label for="">Todo</label>
+            <input type="text" name="todo" id=""><br>
+            <input type="submit">
+        </form>
     
-    
+        <% if(errMsg) { %>
+            <% errMsg.map(el => { %>
+                <p><%= el %></p>
+            <% }) %>
+        <%}%>
+    </main>
     <%-include('partials/Footer')%>
 </body>
 </html>
