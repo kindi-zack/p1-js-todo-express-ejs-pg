@@ -19,6 +19,7 @@ class Model {
         return new Promise((resoleve, rejects) => {
             fs.promises.readFile('./data.json', 'utf-8')
             .then(data => {
+                data = JSON.parse(data)
                 return resoleve(data)
             })
             .catch(err => {
@@ -51,7 +52,7 @@ class Model {
         return new Promise((resoleve, rejects) => {
            return this.list()
             .then(({ rows }) => {
-                let id = rows.length === 0 ? 0 : rows[rows.length - 1].id + 1
+                let id = rows.length === 0 ? 1 : rows[rows.length - 1].id + 1
 
                 if(!todo) return rejects('todo can not be empty !!!')
 

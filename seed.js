@@ -1,7 +1,7 @@
 const { pool } = require('./connection/config')
 const { Model} = require('./models/model')
 
-Model.list()
+Model.readJson()
     .then(data => {
         
         let values = data.map(item => {
@@ -24,6 +24,6 @@ Model.list()
     })
     .catch(err => {
         console.log('++++ ERROR ++++')
-        // console.log(err)
+        console.log(err)
     })
 
